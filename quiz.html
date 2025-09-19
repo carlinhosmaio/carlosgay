@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz</title>
+  <style>
+    .botao {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      margin-top: 837px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .quiz-container {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 400px;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .pergunta {
+      margin: 20px 0;
+      font-weight: bold;
+    }
+    .opcoes {
+      list-style: none;
+      padding: 0;
+    }
+    .opcoes li {
+      margin: 10px 0;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background: #007BFF;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Quiz Rápido</h1>
+
+    <div class="questao" data-correta="b">
+      <p class="pergunta">1) Quanto o niggolas é viado?</p>
+      <ul class="opcoes">
+        <li><label><input type="radio" name="q1" value="b"> 100%</label></li>
+        <li><label><input type="radio" name="q1" value="b"> 1000000000000%</label></li>
+        <li><label><input type="radio" name="q1" value="b"> 99,99999999%</label></li>
+        
+      </ul>
+    </div>
+
+    <div class="questao" data-correta="c">
+      <p class="pergunta">2) O Niggolas é viado?</p>
+      <ul class="opcoes">
+        
+        <li><label><input type="radio" name="q2" value="c"> Sim</label></li>
+        <li><label><input type="radio" name="q2" value="c"> Claro que sim po</label></li>
+        <li><label><input type="radio" name="q2" value="c"> Obvio</label></li>
+      </ul>
+    </div>
+
+    <div class="questao" data-correta="b">
+      <p class="pergunta">3) Que coisa o niggolas gosta de comer?</p>
+      <ul class="opcoes">
+        <li><label><input type="radio" name="q3" value="a"> salada</label></li>
+        <li><label><input type="radio" name="q3" value="b"> queijin</label></li>
+        <li><label><input type="radio" name="q3" value="c"> pera</label></li>
+      </ul>
+    </div>
+
+    <div class="questao" data-correta="a">
+      <p class="pergunta">4) De qual comida o niggolas mais gosta?</p>
+      <ul class="opcoes">
+        <li><label><input type="radio" name="q4" value="a"> wendel</label></li>
+        <li><label><input type="radio" name="q4" value="b"> daniel</label></li>
+        <li><label><input type="radio" name="q4" value="c"> enzo</label></li>
+      </ul>
+    </div>
+
+    <button onclick="verificar()">Enviar Respostas</button>
+    <p id="resultado"></p>
+  </div>
+
+  <script>
+    function verificar() {
+      const questoes = document.querySelectorAll('.questao');
+      let acertos = 0;
+
+      questoes.forEach((questao, index) => {
+        const correta = questao.getAttribute('data-correta');
+        const selecionada = document.querySelector(`input[name="q${index+1}"]:checked`);
+        if (selecionada && selecionada.value === correta) {
+          acertos++;
+        }
+      });
+
+      document.getElementById('resultado').textContent = 
+        `Você acertou ${acertos} de ${questoes.length} perguntas! 🎯`;
+    }
+  </script>
+  <footer>
+
+      <a href="index.html" class="botao">voltar</a>
+    </footer>
+</body>
+</html>
